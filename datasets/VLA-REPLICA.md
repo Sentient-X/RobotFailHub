@@ -1,33 +1,33 @@
 # VLA-REPLICA
 
-| 字段 | 内容 |
+| Field | Value |
 | --- | --- |
 | **Date** | 2026-05 |
 | **Paper** | [VLA-REPLICA: A Low-Cost, Reproducible Benchmark for Real-World Evaluation of Vision-Language-Action Models](https://arxiv.org/abs/2605.20774) |
 | **Domain** | Robot / Real |
 | **Dataset Role** | benchmark-aligned demonstration + reference scene |
-| **R2 Classification** | R2-B — 真机 benchmark，需要在 SO-101 硬件上生成 test rollout |
+| **R2 Classification** | R2-B — real-robot benchmark; test rollouts must be generated on SO-101 hardware |
 | **Modality** | top/wrist RGB, LeRobot-compatible state/action, language, reference scene images |
-| **Size** | 10 个任务；每任务 50 条 demonstration（共 500 条）；90 张 ID/OOD test-scene references；HF 文件约 1.97 GB |
-| **Progress Annotation** | 无；使用任务特定的二元成功条件 |
-| **Failure or Recovery Trajectory** | 无公开统一 test rollout dump；评测脚本要求操作者记录成功/失败行为 |
-| **Subtask Annotation** | 无统一 subtask 标注 |
-| **Failure Taxonomy** | 无 |
-| **License** | 数据 CC BY 4.0；代码 MIT |
+| **Size** | 10 tasks; 50 demonstrations per task (500 in total); 90 ID/OOD test-scene references; HF files about 1.97 GB |
+| **Progress Annotation** | No; uses task-specific binary success conditions |
+| **Failure or Recovery Trajectory** | No public unified test rollout dump; the evaluation script asks the operator to record success/failure behavior |
+| **Subtask Annotation** | No unified subtask annotation |
+| **Failure Taxonomy** | No |
+| **License** | Data CC BY 4.0; code MIT |
 
 ## Description
 
-VLA-REPLICA 是基于 SO-101、固定工作区、顶视与腕部相机的低成本可复现实机 VLA benchmark。官方提供 10 个 manipulation tasks、500 条适配 demonstrations 和 90 张测试场景参考图，用于在不同实验室复现 ID/OOD 真机评测。
+VLA-REPLICA is a low-cost, reproducible real-robot VLA benchmark based on the SO-101 with a fixed workspace and top and wrist cameras. The official release provides 10 manipulation tasks, 500 adaptation demonstrations and 90 test-scene reference images, for reproducing ID/OOD real-robot evaluation across labs.
 
-Hugging Face viewer 显示的 22 rows 是自动转换后的展示单元，不是 robot episode 总数；demonstration 总量应以项目页“每任务 50 条、共 500 条”为准。
+The 22 rows shown by the Hugging Face viewer are display units from automatic conversion, not the total number of robot episodes; the demonstration total should be taken from the project page: "50 per task, 500 in total".
 
 ## Evaluation Protocol
 
-- 每个 task variant 运行 5 次。
-- 每次最长 90 秒。
-- ID：10 个任务 × 5 variants，共 50 次。
-- OOD：8 个任务 × 5 variants，共 40 次。
-- 成功条件按任务定义，例如堆叠需稳定接触超过 2 秒、烤箱门需保持打开超过 2 秒。
+- Each task variant is run 5 times.
+- Each run lasts at most 90 seconds.
+- ID: 10 tasks × 5 variants, 50 runs in total.
+- OOD: 8 tasks × 5 variants, 40 runs in total.
+- Success conditions are defined per task; for example, stacking requires stable contact for more than 2 seconds, and the oven door must stay open for more than 2 seconds.
 
 ## Official Sources
 
@@ -46,5 +46,5 @@ hf download HenryZhang/VLAReplica_SFT_data \
 
 ## Notes
 
-- 公开下载的是训练/适配 demonstrations 与场景 references，不是 candidate policy 的 test rollout 集合。
-- 最适合用于搭建可重复的本地真机评测并主动采集新的失败/接管数据。
+- The public download is training/adaptation demonstrations and scene references, not a collection of candidate-policy test rollouts.
+- Best used to set up a repeatable local real-robot evaluation and actively collect new failure/takeover data.

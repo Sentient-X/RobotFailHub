@@ -1,25 +1,25 @@
 # RoboDojo Real-World Benchmark
 
-| 字段 | 内容 |
+| Field | Value |
 | --- | --- |
 | **Date** | 2026-07 |
 | **Paper** | [RoboDojo: A Unified Sim-and-Real Benchmark for Comprehensive Evaluation of Generalist Robot Manipulation Policies](https://arxiv.org/abs/2607.04434) |
-| **Domain** | Robot / Real + Sim（本卡仅讨论 real benchmark） |
+| **Domain** | Robot / Real + Sim (this card covers only the real benchmark) |
 | **Dataset Role** | evaluation framework, task/config assets, result artifacts |
-| **R2 Classification** | R2-B — 真机 benchmark 与远程评测系统，未确认公开 bulk real rollout dump |
-| **Modality** | task/scene/robot/camera configs, policy result artifacts; real rollout 由 RealEval 产生 |
-| **Size** | 18 个真实任务，3 种 embodiment；另有 42 个仿真任务 |
-| **Progress Annotation** | 有（评测结果级）— task-specific score / leaderboard result |
-| **Failure or Recovery Trajectory** | 未确认存在可批量下载的完整 real rollout 数据集 |
-| **Subtask Annotation** | 任务配置与评分规则可用；逐轨迹 subtask 标注待核验 |
-| **Failure Taxonomy** | 无统一公开 taxonomy |
-| **License** | 代码 MIT；数据与远程真机 result artifacts 的统一许可待核验 |
+| **R2 Classification** | R2-B — real-robot benchmark and remote evaluation system; a public bulk real rollout dump is not confirmed |
+| **Modality** | task/scene/robot/camera configs, policy result artifacts; real rollouts are produced by RealEval |
+| **Size** | 18 real tasks, 3 embodiments; plus 42 simulation tasks |
+| **Progress Annotation** | Yes (evaluation-result level) — task-specific score / leaderboard result |
+| **Failure or Recovery Trajectory** | Existence of a bulk-downloadable complete real rollout dataset not confirmed |
+| **Subtask Annotation** | Task configs and scoring rules are available; per-trajectory subtask annotation to be verified |
+| **Failure Taxonomy** | No unified public taxonomy |
+| **License** | Code MIT; a unified license for the data and remote real-robot result artifacts is to be verified |
 
 ## Description
 
-RoboDojo 统一 42 个 Isaac Sim 任务与 18 个真实机器人任务，并通过 RoboDojo-RealEval 提供标准硬件、场景重置、评测协议和远程云评测。真实部分覆盖 Piper X、Piper 和 ARX X5 三类 embodiment。
+RoboDojo unifies 42 Isaac Sim tasks and 18 real-robot tasks, and through RoboDojo-RealEval provides standard hardware, scene reset, an evaluation protocol and remote cloud evaluation. The real portion covers three embodiments: Piper X, Piper and ARX X5.
 
-官方仓库明确说明当前 release 为 `eval-only`：开放 simulator client、benchmark tasks、asset/config validation 和 result artifacts，policy integration/server 由 XPolicyLab 管理。这不等于已经发布类似 RoboArena 的完整 bulk real rollout dump。
+The official repository states clearly that the current release is `eval-only`: it opens the simulator client, benchmark tasks, asset/config validation and result artifacts, while policy integration/server is managed by XPolicyLab. This does not mean a complete bulk real rollout dump like RoboArena's has been released.
 
 ## Official Sources
 
@@ -31,6 +31,6 @@ RoboDojo 统一 42 个 Isaac Sim 任务与 18 个真实机器人任务，并通�
 
 ## Notes
 
-- 适合持续监控 real task definitions、camera/robot configs、leaderboard 与 result artifact 更新。
-- 在官方明确给出 real rollout partition、体量和许可前，不应全量镜像混合 sim+real 数据源。
-- `eval-only` 描述的是软件 release 的职责边界，不代表“只包含公开真实评测轨迹”。
+- Worth monitoring for updates to real task definitions, camera/robot configs, the leaderboard and result artifacts.
+- Until the official release states a real rollout partition, its size and license, do not mirror the mixed sim+real data sources wholesale.
+- `eval-only` describes the scope of the software release; it does not mean "contains only public real evaluation trajectories".
