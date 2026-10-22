@@ -1,25 +1,25 @@
 # FurnitureBench
 
-| 字段 | 内容 |
+| Field | Value |
 | --- | --- |
 | **Date** | 2023-05 |
 | **Paper** | [FurnitureBench: Reproducible Real-World Benchmark for Long-Horizon Complex Manipulation](https://arxiv.org/abs/2305.12821) |
-| **Domain** | Robot / Real（另有 FurnitureSim） |
+| **Domain** | Robot / Real (FurnitureSim also available) |
 | **Dataset Role** | benchmark-aligned successful demonstration |
-| **R2 Classification** | R2-B — 真机 benchmark，公开数据主要是 demonstrations |
+| **R2 Classification** | R2-B — real-robot benchmark; the public data is mainly demonstrations |
 | **Modality** | wrist/front RGB, EEF pose/velocity, joints, torque, gripper, 8-D action, reward, skill flags |
-| **Size** | 5,100 条成功 demonstrations，219.6 小时；raw PKL 合计约 1,179 GB |
-| **Progress Annotation** | 有 — assembly reward 与 skill-completion flags |
-| **Failure or Recovery Trajectory** | 无 — 官方公开清单描述为成功 demonstrations |
-| **Subtask Annotation** | 有 — skill completion flags |
-| **Failure Taxonomy** | 无 |
-| **License** | 数据许可待核验；不可由代码仓库许可推断 |
+| **Size** | 5,100 successful demonstrations, 219.6 hours; raw PKL about 1,179 GB in total |
+| **Progress Annotation** | Yes — assembly reward and skill-completion flags |
+| **Failure or Recovery Trajectory** | No — the official public listing describes them as successful demonstrations |
+| **Subtask Annotation** | Yes — skill completion flags |
+| **Failure Taxonomy** | No |
+| **License** | Data license to be verified; it cannot be inferred from the code repository license |
 
 ## Description
 
-FurnitureBench 是真实机器人长时程家具装配 benchmark，包含 9 类 3D 打印家具和 low / medium / high 三档初始化随机性。公开数据为 Oculus Quest 2 与键盘遥操作采集的成功 demonstrations，适合 imitation learning、offline RL、长时程进度和 skill boundary 研究。
+FurnitureBench is a real-robot long-horizon furniture assembly benchmark with 9 kinds of 3D-printed furniture and three levels of initialization randomness: low / medium / high. The public data consists of successful demonstrations collected by teleoperation with an Oculus Quest 2 and a keyboard, suitable for imitation learning, offline RL, and research on long-horizon progress and skill boundaries.
 
-每个 PKL trajectory 保存 wrist/front RGB、机器人状态、8-D action、assembly reward 和 skill completion flags。真正的候选 policy 评测需要物理 Franka setup，不能把 demonstration corpus 标作 test rollout。
+Each PKL trajectory stores wrist/front RGB, robot state, 8-D action, assembly reward and skill completion flags. Actually evaluating a candidate policy requires the physical Franka setup; the demonstration corpus must not be labeled as test rollouts.
 
 ## Official Sources
 
@@ -40,6 +40,6 @@ python furniture_bench/scripts/download_dataset.py \
 
 ## Notes
 
-- raw PKL 体量：low 457 GB、medium 499 GB、high 223 GB。
-- Google Drive quota 受限时，官方文档提供 rclone 下载方案。
-- 建议按 furniture 与 randomness 选择性下载。
+- Raw PKL size: low 457 GB, medium 499 GB, high 223 GB.
+- When the Google Drive quota is limited, the official docs provide an rclone download method.
+- Download selectively by furniture and randomness.
